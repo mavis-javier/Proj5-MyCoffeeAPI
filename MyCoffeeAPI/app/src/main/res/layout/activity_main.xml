@@ -37,11 +37,22 @@
         android:id="@+id/coffeeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:text="More coffee pics!"
         app:iconTint="?attr/colorOnTertiaryFixedVariant"
+        app:layout_constraintEnd_toEndOf="@+id/descriptionText"
+        app:layout_constraintStart_toStartOf="@+id/descriptionText"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="50dp"
+        android:text="Java beans filled with cream made in Indonesia!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="@+id/coffeeImg"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/coffeeImg"
         app:layout_constraintTop_toBottomOf="@+id/coffeeImg" />
 

@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var coffeeTitleURL = ""
     var coffeeImgURL = ""
+    var coffeeDescURL = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // for linking id attributes from activity_main to activity
@@ -28,7 +29,8 @@ class MainActivity : AppCompatActivity() {
         var button = findViewById<Button>(binding.coffeeBtn.id)
         var imageView = findViewById<ImageView>(binding.coffeeImg.id)
         var textView = findViewById<TextView>(binding.coffeeName.id)
-        getNextImage(button, imageView,textView)
+        var description = findViewById<TextView>(binding.descriptionText.id)
+        getNextImage(button, imageView,textView, description)
     }
 
     // gets Coffee pics from API
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Coffee", "response successful")
                 coffeeImgURL = json.jsonObject.getString("image")
                 coffeeTitleURL = json.jsonObject.getString("title")
+                coffeeDescURL = json.jsonObject.getString("description")
             }
 
             override fun onFailure(
@@ -56,10 +59,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     // onClick Listener for coffee button
-    private fun getNextImage(button: Button, imageView: ImageView, textView: TextView) {
+    private fun getNextImage(button: Button, imageView: ImageView, textView: TextView, description: TextView) {
         button.setOnClickListener{
             getCoffeeURL()
             textView.setText(coffeeTitleURL)
+            description.setText(coffeeDescURL)
             Glide.with(this)
                 .load(coffeeImgURL)
                 .fitCenter()
